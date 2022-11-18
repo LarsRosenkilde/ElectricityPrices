@@ -12,4 +12,10 @@
     <string name="pool_price_west_res">---</string>
     <string name="pool_price_east_res">---</string>
     <string name="update_button">Opdater</string>
+    <string name="menu_title">Aftaler</string>
+    <string-array name="aftaler">
+        <item>Flex</item>
+        <item>Combo</item>
+        <item>Pulje</item>
+    </string-array>
 </resources>

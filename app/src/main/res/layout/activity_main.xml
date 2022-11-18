@@ -17,12 +17,12 @@
         android:paddingEnd="10dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!--ImageView
+        <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_menu"
-            app:tint="@color/white" /-->
+            app:tint="@color/white" />
 
         <TextView
             android:layout_width="0dp"
@@ -30,10 +30,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:text="@string/flex_title"
+            android:text="@string/menu_title"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
+
     </LinearLayout>
 
     <View
