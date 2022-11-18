@@ -3,13 +3,13 @@
     <string name="price_west">Vest</string>
     <string name="price_east">Øst</string>
     <string name="flex_title">FlexEl</string>
-    <string name="flex_price_west_res">100,99 øre/kWh</string>
-    <string name="flex_price_east_res">101,76 øre/kWh</string>
+    <string name="flex_price_west_res">---</string>
+    <string name="flex_price_east_res">---</string>
     <string name="combo_title">ComboEl</string>
-    <string name="combo_price_west_res">100,99 øre/kWh</string>
-    <string name="combo_price_east_res">101,76 øre/kWh</string>
+    <string name="combo_price_west_res">---</string>
+    <string name="combo_price_east_res">---</string>
     <string name="pool_title">PuljeEl</string>
-    <string name="pool_price_west_res">100,99 øre/kWh</string>
-    <string name="pool_price_east_res">101,76 øre/kWh</string>
+    <string name="pool_price_west_res">---</string>
+    <string name="pool_price_east_res">---</string>
     <string name="update_button">Opdater Priser</string>
 </resources>

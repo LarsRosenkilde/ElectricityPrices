@@ -28,6 +28,7 @@ class FlexActivity : AppCompatActivity() {
         button.setOnClickListener {
             WebScratch().execute()
         }
+        WebScratch().execute()
     }
     @SuppressLint("StaticFieldLeak")
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
