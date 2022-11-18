@@ -7,9 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="norlysLightGreen">#369993</color>
-    <color name="norlysDarkGreen">#0F3D24</color>
-    <color name="norlysRed">#F7242E</color>
+    <color name="lightGreen">#369993</color>
+    <color name="darkGreen">#0F3D24</color>
+    <color name="darkRed">#F7242E</color>
     <color name="semiDark">#40000000</color>
     <color name="colorlabel_background">#99F2F2F2</color>
     <color name="colorDivider">#E9E9E9</color>

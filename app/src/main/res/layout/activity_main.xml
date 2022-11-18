@@ -10,7 +10,7 @@
         android:id="@+id/layoutToolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/norlysLightGreen"
+        android:background="@color/lightGreen"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingStart="10dp"
