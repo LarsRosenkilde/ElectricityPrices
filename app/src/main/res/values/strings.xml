@@ -1,4 +1,3 @@
 <resources>
-    <string name="app_name">ElPriser</string>
-    <string name="todo">Todo: Gem tidligere data i fil, og indlæs ved opstart under "tidligere priser"</string>
+    <string name="app_name">StrømPris</string>
 </resources>
