@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StrømPris</string>
+    <string name="app_name">Strøm Pris</string>
     <string name="price_west">Vest</string>
     <string name="price_east">Øst</string>
     <string name="flex_title">FlexEl</string>
