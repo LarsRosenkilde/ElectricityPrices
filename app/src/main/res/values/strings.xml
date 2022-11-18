@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">StrømPris</string>
-    <string name="flex_priser">Flex Priser</string>
+    <string name="flex_prices">Flex Priser</string>
     <string name="flex_price_west">Flex Pris Vest</string>
     <string name="flex_price_east">Flex Pris Øst</string>
     <string name="flex_price_west_res">100,99 øre/kWh</string>
