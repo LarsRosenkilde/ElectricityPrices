@@ -11,6 +11,6 @@
     <color name="darkGreen">#0F3D24</color>
     <color name="darkRed">#F7242E</color>
     <color name="semiDark">#40000000</color>
-    <color name="colorlabel_background">#99F2F2F2</color>
+    <color name="colorBackground">#99F2F2F2</color>
     <color name="colorDivider">#E9E9E9</color>
 </resources>
