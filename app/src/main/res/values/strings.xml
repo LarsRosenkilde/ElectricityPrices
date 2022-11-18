@@ -5,4 +5,5 @@
     <string name="flex_price_east">Flex Pris Øst</string>
     <string name="flex_price_west_res">100,99 øre/kWh</string>
     <string name="flex_price_east_res">101,76 øre/kWh</string>
+    <string name="update_button">Opdater Priser</string>
 </resources>
