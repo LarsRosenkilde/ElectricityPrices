@@ -36,6 +36,87 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorlabel_background"
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar"
+        app:layout_constraintBottom_toTopOf="@+id/viewDivider"/>
+
+    <TextView
+        android:id="@+id/flexWestPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="@string/flex_price_west"
+        android:textAllCaps="true"
+        android:textColor="@color/norlysDarkGreen"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/flexEastPrice"
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar" />
+
+    <TextView
+        android:id="@+id/flexEastPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="@string/flex_price_east"
+        android:textAllCaps="true"
+        android:textColor="@color/norlysDarkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/flexWestPrice"
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar" />
+
+    <TextView
+        android:id="@+id/price_west"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:text="@string/flex_price_west_res"
+        android:textColor="@color/norlysDarkGreen"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/flexWestPrice"
+        app:layout_constraintStart_toStartOf="@id/flexWestPrice"
+        app:layout_constraintTop_toBottomOf="@id/flexWestPrice" />
+
+    <TextView
+        android:id="@+id/price_east"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:text="@string/flex_price_east_res"
+        android:textColor="@color/norlysDarkGreen"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/flexEastPrice"
+        app:layout_constraintStart_toStartOf="@id/flexEastPrice"
+        app:layout_constraintTop_toBottomOf="@id/flexEastPrice" />
+
+    <View
+        android:id="@+id/viewDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorDivider"
+        app:layout_constraintTop_toBottomOf="@+id/price_west"/>
+
     <Button
         android:id="@+id/btnView"
         android:layout_width="wrap_content"
@@ -47,7 +128,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <!--TextView
         android:id="@+id/puljeWest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -125,6 +206,6 @@
         android:text="Øst Priser"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutToolbar" /-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

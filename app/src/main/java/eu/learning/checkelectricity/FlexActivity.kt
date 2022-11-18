@@ -35,9 +35,9 @@ class FlexActivity : AppCompatActivity() {
             try {
                 val document =  Jsoup.connect("https://norlys.dk/kundeservice/el/gaeldende-elpriser/").get()
                 flexW = document.select("#elprodukter > div > div > div > div > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(2)").toString()
-                flexW = "Flex El:\n" + regex.find(flexW)!!.value + " øre/kWh"
+                flexW = regex.find(flexW)!!.value + " øre/kWh"
                 flexE = document.select("#elprodukter > div > div > div > div > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(2)").toString()
-                flexE = "Flex El:\n" + regex.find(flexE)!!.value + " øre/kWh"
+                flexE = regex.find(flexE)!!.value + " øre/kWh"
             } catch (e: IOException) {
                 e.printStackTrace()
             }
