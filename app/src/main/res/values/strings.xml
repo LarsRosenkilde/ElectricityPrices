@@ -11,5 +11,5 @@
     <string name="pool_title">PuljeEl</string>
     <string name="pool_price_west_res">---</string>
     <string name="pool_price_east_res">---</string>
-    <string name="update_button">Opdater Priser</string>
+    <string name="update_button">Opdater</string>
 </resources>
