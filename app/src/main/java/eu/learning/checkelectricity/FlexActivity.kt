@@ -6,18 +6,21 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import eu.learning.checkelectricity.databinding.ActivityFlexBinding
 import kotlinx.coroutines.flow.combine
 import org.jsoup.Jsoup
 import java.io.IOException
 
 @Suppress("DEPRECATION")
 class FlexActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityFlexBinding
     private lateinit var textViewFlexW: TextView
     private lateinit var textViewFlexE: TextView
     lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityFlexBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         title = "CheckElectricity"
         textViewFlexW = findViewById(R.id.price_west)
         textViewFlexE = findViewById(R.id.price_east)

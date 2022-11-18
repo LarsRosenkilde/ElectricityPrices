@@ -6,12 +6,15 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import eu.learning.checkelectricity.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.combine
 import org.jsoup.Jsoup
 import java.io.IOException
 
+
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     //private lateinit var textViewPuljeW: TextView
     //private lateinit var textViewKombiW: TextView
     private lateinit var textViewFlexW: TextView
@@ -21,7 +24,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         title = "KotlinApp"
         //textViewPuljeW = findViewById(R.id.puljeWest)
         //textViewKombiW = findViewById(R.id.combiWest)
