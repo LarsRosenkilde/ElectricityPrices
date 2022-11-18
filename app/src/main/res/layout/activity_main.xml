@@ -118,6 +118,17 @@
         app:layout_constraintTop_toBottomOf="@+id/price_west"/>
 
     <Button
+        android:id="@+id/btnStartAnotherActivity"
+        android:text="Start Another Activity"
+        android:textColor="#FFF"
+        android:padding="20sp"
+        android:background="#397bb2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/viewDivider"
+        tools:ignore="MissingConstraints" />
+
+    <Button
         android:id="@+id/btnView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,6 +1,7 @@
 package eu.learning.checkelectricity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.AsyncTask
 import android.os.Bundle
@@ -37,6 +38,12 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             WebScratch().execute()
         }
+
+        binding.btnStartAnotherActivity.setOnClickListener {
+            val intent = Intent(this, FlexActivity::class.java)
+            startActivity(intent)
+        }
+
     }
     @SuppressLint("StaticFieldLeak")
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
