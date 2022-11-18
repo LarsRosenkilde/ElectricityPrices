@@ -8,5 +8,8 @@
     <string name="combo_title">ComboEl</string>
     <string name="combo_price_west_res">100,99 øre/kWh</string>
     <string name="combo_price_east_res">101,76 øre/kWh</string>
+    <string name="pool_title">PuljeEl</string>
+    <string name="pool_price_west_res">100,99 øre/kWh</string>
+    <string name="pool_price_east_res">101,76 øre/kWh</string>
     <string name="update_button">Opdater Priser</string>
 </resources>

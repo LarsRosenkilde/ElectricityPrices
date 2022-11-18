@@ -46,177 +46,52 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/colorlabel_background"
-        app:layout_constraintTop_toBottomOf="@id/layoutToolbar"
-        app:layout_constraintBottom_toTopOf="@+id/viewDivider"/>
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar"/>
 
-    <TextView
-        android:id="@+id/flexWestPrice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:gravity="center"
-        android:text="@string/price_west"
-        android:textAllCaps="true"
-        android:textColor="@color/norlysDarkGreen"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/flexEastPrice"
-        app:layout_constraintTop_toBottomOf="@id/layoutToolbar" />
-
-    <TextView
-        android:id="@+id/flexEastPrice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:gravity="center"
-        android:text="@string/price_east"
-        android:textAllCaps="true"
-        android:textColor="@color/norlysDarkGreen"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/flexWestPrice"
-        app:layout_constraintTop_toBottomOf="@id/layoutToolbar" />
-
-    <TextView
-        android:id="@+id/price_west"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:gravity="center"
-        android:text="@string/flex_price_west_res"
-        android:textColor="@color/norlysDarkGreen"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/flexWestPrice"
-        app:layout_constraintStart_toStartOf="@id/flexWestPrice"
-        app:layout_constraintTop_toBottomOf="@id/flexWestPrice" />
-
-    <TextView
-        android:id="@+id/price_east"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:gravity="center"
-        android:text="@string/flex_price_east_res"
-        android:textColor="@color/norlysDarkGreen"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/flexEastPrice"
-        app:layout_constraintStart_toStartOf="@id/flexEastPrice"
-        app:layout_constraintTop_toBottomOf="@id/flexEastPrice" />
-
-    <View
-        android:id="@+id/viewDivider"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="15dp"
-        android:background="@color/colorDivider"
-        app:layout_constraintTop_toBottomOf="@+id/price_west"/>
 
     <Button
-        android:id="@+id/btnStartAnotherActivity"
-        android:text="Start Another Activity"
-        android:textColor="#FFF"
-        android:padding="20sp"
-        android:background="#397bb2"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnFlexActivity"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/viewDivider"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="Flex Priser"
+        android:textColor="#FFF"
+        android:background="#397bb2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/btnView"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnComboActivity"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/update_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!--TextView
-        android:id="@+id/puljeWest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Pulje West"
-        android:textSize="20sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="Combo Priser"
+        android:textColor="#FFF"
+        android:background="#397bb2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitleW" />
+        app:layout_constraintTop_toBottomOf="@id/btnFlexActivity"
+        tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/puljeEast"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btnPoolActivity"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Pulje East"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitleE" />
-
-    <TextView
-        android:id="@+id/combiWest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Combi West"
-        android:textSize="20sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="Pulje Priser"
+        android:textColor="#FFF"
+        android:background="#397bb2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puljeWest" />
-
-    <TextView
-        android:id="@+id/combiEast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Combi East"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puljeEast" />
-
-    <TextView
-        android:id="@+id/flexEast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Flex East"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/combiEast" />
-
-    <TextView
-        android:id="@+id/flexWest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Flex West"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/combiWest" />
-
-    <TextView
-        android:id="@+id/textViewTitleW"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Vest Priser"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutToolbar" />
-
-    <TextView
-        android:id="@+id/textViewTitleE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Øst Priser"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutToolbar" /-->
+        app:layout_constraintTop_toBottomOf="@id/btnComboActivity"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
