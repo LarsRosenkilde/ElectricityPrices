@@ -34,7 +34,8 @@ class ComboActivity : AppCompatActivity() {
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
         private lateinit var comboW: String
         private lateinit var comboE: String
-        val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex()
+        private val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex() // 100,00
+        @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: Void): Void? {
             try {
                 val document =  Jsoup.connect("https://norlys.dk/kundeservice/el/gaeldende-elpriser/").get()
@@ -47,6 +48,7 @@ class ComboActivity : AppCompatActivity() {
             }
             return null
         }
+        @Deprecated("Deprecated in Java")
         override fun onPostExecute(aVoid: Void?) {
             super.onPostExecute(aVoid)
             textViewComboW.text = comboW

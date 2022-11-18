@@ -34,7 +34,8 @@ class FlexActivity : AppCompatActivity() {
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
         private lateinit var flexW: String
         private lateinit var flexE: String
-        val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex()
+        private val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex()
+        @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: Void): Void? {
             try {
                 val document =  Jsoup.connect("https://norlys.dk/kundeservice/el/gaeldende-elpriser/").get()
@@ -47,6 +48,7 @@ class FlexActivity : AppCompatActivity() {
             }
             return null
         }
+        @Deprecated("Deprecated in Java")
         override fun onPostExecute(aVoid: Void?) {
             super.onPostExecute(aVoid)
             textViewFlexW.text = flexW
