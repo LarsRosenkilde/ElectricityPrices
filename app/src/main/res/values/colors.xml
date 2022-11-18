@@ -10,4 +10,5 @@
     <color name="norlysLightGreen">#369993</color>
     <color name="norlysDarkGreen">#0F3D24</color>
     <color name="norlysRed">#F7242E</color>
+    <color name="semiDark">#40000000</color>
 </resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StrømPris</string>
+    <string name="flex_priser">Flex Priser</string>
 </resources>
