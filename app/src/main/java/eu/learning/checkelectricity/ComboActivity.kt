@@ -16,22 +16,20 @@ class ComboActivity : AppCompatActivity() {
     private lateinit var binding: ActivityComboBinding
     private lateinit var textViewComboW: TextView
     private lateinit var textViewComboE: TextView
+    private lateinit var intentFlex: Intent
+    private lateinit var intentPool: Intent
     lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityComboBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         title = "CheckElectricity"
+        intentFlex = Intent(this, FlexActivity::class.java)
+        intentPool = Intent(this, PoolActivity::class.java)
+        setContentView(binding.root)
         textViewComboW = findViewById(R.id.price_west)
         textViewComboE = findViewById(R.id.price_east)
-        val intentFlex = Intent(this, FlexActivity::class.java)
-        val intentCombo = Intent(this, ComboActivity::class.java)
-        val intentPool = Intent(this, PoolActivity::class.java)
         binding.flexButton.setOnClickListener {
             startActivity(intentFlex)
-        }
-        binding.comboButton.setOnClickListener {
-            startActivity(intentCombo)
         }
         binding.poolButton.setOnClickListener {
             startActivity(intentPool)
