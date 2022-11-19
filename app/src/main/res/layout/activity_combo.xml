@@ -37,6 +37,50 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorBackground"
+        android:backgroundTint="@color/lightGreen"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageButton
+        android:id="@+id/flexButton"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginBottom="5sp"
+        android:contentDescription="@string/flex_tab_button"
+        android:gravity="center"
+        android:src="@drawable/ic_flex"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/view"
+        app:layout_constraintEnd_toStartOf="@+id/poolButton"/>
+
+    <ImageButton
+        android:id="@+id/poolButton"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginBottom="5sp"
+        android:contentDescription="@string/pool_tab_button"
+        android:gravity="center"
+        android:src="@drawable/ic_pool"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/flexButton"
+        app:layout_constraintEnd_toStartOf="@+id/comboButton"/>
+
+    <ImageButton
+        android:id="@+id/comboButton"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginBottom="5sp"
+        android:contentDescription="@string/combo_tab_button"
+        android:gravity="center"
+        android:src="@drawable/ic_combo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toEndOf="@+id/poolButton" />
+
+    <View
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/layoutToolbar"
@@ -127,7 +171,7 @@
         android:background="@drawable/buttons"
         android:textColor="@color/white"
         android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
