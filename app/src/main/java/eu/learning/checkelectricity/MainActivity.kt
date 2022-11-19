@@ -8,22 +8,14 @@ import eu.learning.checkelectricity.databinding.ActivityMainBinding
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var intentFlex: Intent
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         title = "CheckElectricity"
-        val intentFlex = Intent(this, FlexActivity::class.java)
-        val intentCombo = Intent(this, ComboActivity::class.java)
-        val intentPool = Intent(this, PoolActivity::class.java)
-        binding.flexButton.setOnClickListener {
-            startActivity(intentFlex)
-        }
-        binding.comboButton.setOnClickListener {
-            startActivity(intentCombo)
-        }
-        binding.poolButton.setOnClickListener {
-            startActivity(intentPool)
-        }
+        intentFlex = Intent(this, FlexActivity::class.java)
+        setContentView(binding.root)
+
+        startActivity(intentFlex)
     }
 }
