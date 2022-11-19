@@ -1,6 +1,7 @@
 package eu.learning.checkelectricity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.AsyncTask
 import android.os.Bundle
@@ -23,6 +24,18 @@ class PoolActivity : AppCompatActivity() {
         title = "CheckElectricity"
         textViewPoolW = findViewById(R.id.price_west)
         textViewPoolE = findViewById(R.id.price_east)
+        val intentFlex = Intent(this, FlexActivity::class.java)
+        val intentCombo = Intent(this, ComboActivity::class.java)
+        val intentPool = Intent(this, PoolActivity::class.java)
+        binding.flexButton.setOnClickListener {
+            startActivity(intentFlex)
+        }
+        binding.comboButton.setOnClickListener {
+            startActivity(intentCombo)
+        }
+        binding.poolButton.setOnClickListener {
+            startActivity(intentPool)
+        }
         button = findViewById(R.id.btnView)
         button.setOnClickListener {
             WebScratch().execute()

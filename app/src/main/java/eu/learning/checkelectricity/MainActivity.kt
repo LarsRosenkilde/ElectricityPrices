@@ -16,13 +16,13 @@ class MainActivity : AppCompatActivity() {
         val intentFlex = Intent(this, FlexActivity::class.java)
         val intentCombo = Intent(this, ComboActivity::class.java)
         val intentPool = Intent(this, PoolActivity::class.java)
-        binding.btnFlexActivity.setOnClickListener {
+        binding.flexButton.setOnClickListener {
             startActivity(intentFlex)
         }
-        binding.btnComboActivity.setOnClickListener {
+        binding.comboButton.setOnClickListener {
             startActivity(intentCombo)
         }
-        binding.btnPoolActivity.setOnClickListener {
+        binding.poolButton.setOnClickListener {
             startActivity(intentPool)
         }
     }
