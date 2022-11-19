@@ -38,6 +38,7 @@ class FlexActivity : AppCompatActivity() {
         button.setOnClickListener {
             WebScratch().execute()
         }
+        binding.flexButton.isPressed = true
         WebScratch().execute()
     }
     @SuppressLint("StaticFieldLeak")

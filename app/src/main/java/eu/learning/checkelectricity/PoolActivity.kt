@@ -38,6 +38,7 @@ class PoolActivity : AppCompatActivity() {
         button.setOnClickListener {
             WebScratch().execute()
         }
+        binding.poolButton.isPressed = true
         WebScratch().execute()
     }
     @SuppressLint("StaticFieldLeak")

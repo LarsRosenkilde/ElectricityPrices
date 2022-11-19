@@ -38,6 +38,7 @@ class ComboActivity : AppCompatActivity() {
         button.setOnClickListener {
             WebScratch().execute()
         }
+        binding.comboButton.isPressed = true
         WebScratch().execute()
     }
     @SuppressLint("StaticFieldLeak")
