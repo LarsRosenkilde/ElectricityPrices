@@ -2,23 +2,16 @@
     <string name="app_name">Strøm Pris</string>
     <string name="price_west">Vest</string>
     <string name="price_east">Øst</string>
-    <string name="flex_title">FlexEl</string>
+    <string name="flex_title">FLEX</string>
     <string name="flex_price_west_res">---</string>
     <string name="flex_price_east_res">---</string>
-    <string name="combo_title">ComboEl</string>
+    <string name="combo_title">COMBO</string>
     <string name="combo_price_west_res">---</string>
     <string name="combo_price_east_res">---</string>
-    <string name="pool_title">PuljeEl</string>
+    <string name="pool_title">PULJE</string>
     <string name="pool_price_west_res">---</string>
     <string name="pool_price_east_res">---</string>
-    <string name="update_button">Opdater</string>
-    <string name="menu_title">Aftaler</string>
     <string name="flex_tab_button">Flex Tab Button</string>
     <string name="pool_tab_button">Pool Tab Button</string>
-    <string name="combo_tab_button"><![CDATA[Combo Tab Button>]]></string>
-    <string-array name="aftaler">
-        <item>Flex</item>
-        <item>Combo</item>
-        <item>Pulje</item>
-    </string-array>
+    <string name="combo_tab_button">Combo Tab Button</string>
 </resources>
