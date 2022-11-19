@@ -16,27 +16,25 @@ class PoolActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPoolBinding
     private lateinit var textViewPoolW: TextView
     private lateinit var textViewPoolE: TextView
+    private lateinit var intentFlex: Intent
+    private lateinit var intentCombo: Intent
     lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPoolBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         title = "CheckElectricity"
+        intentFlex = Intent(this, FlexActivity::class.java)
+        intentCombo = Intent(this, ComboActivity::class.java)
+        setContentView(binding.root)
         textViewPoolW = findViewById(R.id.price_west)
         textViewPoolE = findViewById(R.id.price_east)
-        val intentFlex = Intent(this, FlexActivity::class.java)
-        val intentCombo = Intent(this, ComboActivity::class.java)
-        val intentPool = Intent(this, PoolActivity::class.java)
+        button = findViewById(R.id.btnView)
         binding.flexButton.setOnClickListener {
             startActivity(intentFlex)
         }
         binding.comboButton.setOnClickListener {
             startActivity(intentCombo)
         }
-        binding.poolButton.setOnClickListener {
-            startActivity(intentPool)
-        }
-        button = findViewById(R.id.btnView)
         button.setOnClickListener {
             WebScratch().execute()
         }
