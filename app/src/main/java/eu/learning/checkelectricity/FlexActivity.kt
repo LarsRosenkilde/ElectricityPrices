@@ -18,7 +18,6 @@ class FlexActivity : AppCompatActivity() {
     private lateinit var textViewFlexE: TextView
     private lateinit var intentPool: Intent
     private lateinit var intentCombo: Intent
-    lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFlexBinding.inflate(layoutInflater)
@@ -33,10 +32,6 @@ class FlexActivity : AppCompatActivity() {
         }
         binding.poolButton.setOnClickListener {
             startActivity(intentPool)
-        }
-        button = findViewById(R.id.btnView)
-        button.setOnClickListener {
-            WebScratch().execute()
         }
         binding.flexButton.isPressed = true
         WebScratch().execute()

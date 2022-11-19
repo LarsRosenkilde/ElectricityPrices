@@ -18,7 +18,6 @@ class PoolActivity : AppCompatActivity() {
     private lateinit var textViewPoolE: TextView
     private lateinit var intentFlex: Intent
     private lateinit var intentCombo: Intent
-    lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPoolBinding.inflate(layoutInflater)
@@ -28,15 +27,11 @@ class PoolActivity : AppCompatActivity() {
         setContentView(binding.root)
         textViewPoolW = findViewById(R.id.price_west)
         textViewPoolE = findViewById(R.id.price_east)
-        button = findViewById(R.id.btnView)
         binding.flexButton.setOnClickListener {
             startActivity(intentFlex)
         }
         binding.comboButton.setOnClickListener {
             startActivity(intentCombo)
-        }
-        button.setOnClickListener {
-            WebScratch().execute()
         }
         binding.poolButton.isPressed = true
         WebScratch().execute()

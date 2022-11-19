@@ -18,7 +18,6 @@ class ComboActivity : AppCompatActivity() {
     private lateinit var textViewComboE: TextView
     private lateinit var intentFlex: Intent
     private lateinit var intentPool: Intent
-    lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityComboBinding.inflate(layoutInflater)
@@ -33,10 +32,6 @@ class ComboActivity : AppCompatActivity() {
         }
         binding.poolButton.setOnClickListener {
             startActivity(intentPool)
-        }
-        button = findViewById(R.id.btnView)
-        button.setOnClickListener {
-            WebScratch().execute()
         }
         binding.comboButton.isPressed = true
         WebScratch().execute()
