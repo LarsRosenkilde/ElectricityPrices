@@ -4,7 +4,6 @@ import org.jsoup.Jsoup
 import android.os.Bundle
 import java.io.IOException
 import android.os.AsyncTask
-import android.widget.Button
 import android.content.Intent
 import android.widget.TextView
 import android.annotation.SuppressLint
