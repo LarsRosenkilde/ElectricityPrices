@@ -1,8 +1,8 @@
 package eu.learning.checkelectricity
 
+import android.os.Bundle
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import eu.learning.checkelectricity.databinding.ActivityMainBinding
 
 @Suppress("DEPRECATION")

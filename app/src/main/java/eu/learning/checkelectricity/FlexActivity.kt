@@ -1,15 +1,14 @@
 package eu.learning.checkelectricity
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.AsyncTask
-import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import eu.learning.checkelectricity.databinding.ActivityFlexBinding
 import org.jsoup.Jsoup
+import android.os.Bundle
 import java.io.IOException
+import android.os.AsyncTask
+import android.content.Intent
+import android.widget.TextView
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AppCompatActivity
+import eu.learning.checkelectricity.databinding.ActivityFlexBinding
 
 @Suppress("DEPRECATION")
 class FlexActivity : AppCompatActivity() {

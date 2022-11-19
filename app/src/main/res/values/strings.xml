@@ -3,12 +3,12 @@
     <string name="price_west">Vest</string>
     <string name="price_east">Øst</string>
     <string name="flex_title">FLEX</string>
+    <string name="combo_title">COMBO</string>
+    <string name="pool_title">PULJE</string>
     <string name="flex_price_west_res">---</string>
     <string name="flex_price_east_res">---</string>
-    <string name="combo_title">COMBO</string>
     <string name="combo_price_west_res">---</string>
     <string name="combo_price_east_res">---</string>
-    <string name="pool_title">PULJE</string>
     <string name="pool_price_west_res">---</string>
     <string name="pool_price_east_res">---</string>
     <string name="flex_tab_button">Flex Tab Button</string>
