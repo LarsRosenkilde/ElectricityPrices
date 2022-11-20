@@ -26,9 +26,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".FlexActivity"/>
-        <activity android:name=".ComboActivity"/>
-        <activity android:name=".PoolActivity"/>
+        <activity android:name=".FlexActivity" />
+        <activity android:name=".ComboActivity" />
+        <activity android:name=".PoolActivity" />
     </application>
 
 </manifest>
