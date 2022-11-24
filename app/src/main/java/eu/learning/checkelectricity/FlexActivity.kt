@@ -7,6 +7,8 @@ import android.os.AsyncTask
 import android.content.Intent
 import android.widget.TextView
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import eu.learning.checkelectricity.databinding.ActivityFlexBinding
 
@@ -15,6 +17,7 @@ class FlexActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFlexBinding
     private lateinit var textViewFlexW: TextView
     private lateinit var textViewFlexE: TextView
+    private lateinit var oldPrice: TextView
     private lateinit var intentPool: Intent
     private lateinit var intentCombo: Intent
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +29,7 @@ class FlexActivity : AppCompatActivity() {
         setContentView(binding.root)
         textViewFlexW = findViewById(R.id.price_west)
         textViewFlexE = findViewById(R.id.price_east)
+        oldPrice = findViewById(R.id.previousPrices)
         binding.comboButton.setOnClickListener {
             startActivity(intentCombo)
         }
@@ -56,8 +60,15 @@ class FlexActivity : AppCompatActivity() {
         @Deprecated("Deprecated in Java")
         override fun onPostExecute(aVoid: Void?) {
             super.onPostExecute(aVoid)
+            readData()
             textViewFlexW.text = flexW
             textViewFlexE.text = flexE
+        }
+
+        private fun readData() {
+            val sharedPreferences: SharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            val savedString: String? = sharedPreferences.getString("STRING_KEY", null)
+            oldPrice.text = savedString
         }
     }
     /*

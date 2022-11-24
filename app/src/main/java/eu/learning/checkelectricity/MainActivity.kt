@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.AsyncTask
-import android.os.NetworkOnMainThreadException
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import eu.learning.checkelectricity.databinding.ActivityMainBinding
 import org.jsoup.Jsoup
@@ -84,8 +82,10 @@ class MainActivity : AppCompatActivity() {
             saveData()
         }
 
+        @SuppressLint("SimpleDateFormat")
         private fun saveData() {
-            var result: String = ""
+            val dateFormat = SimpleDateFormat("dd/M/yyyy")
+            var result: String = dateFormat.format(Date())
             for (price in data) {
                 result += ",${price.value}"
             }
