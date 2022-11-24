@@ -9,11 +9,9 @@ import android.widget.TextView
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import eu.learning.checkelectricity.databinding.ActivityFlexBinding
-import java.text.SimpleDateFormat
-import java.util.*
 
 @Suppress("DEPRECATION")
-class FlexActivity : AppCompatActivity(), SaveData {
+class FlexActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFlexBinding
     private lateinit var textViewFlexW: TextView
     private lateinit var textViewFlexE: TextView
@@ -62,7 +60,7 @@ class FlexActivity : AppCompatActivity(), SaveData {
             textViewFlexE.text = flexE
         }
     }
-
+    /*
     override var curTime: String
         get() = TODO("Not yet implemented")
         set(value) {}
@@ -70,9 +68,11 @@ class FlexActivity : AppCompatActivity(), SaveData {
     override var prices: Array<String>
         get() = TODO("Not yet implemented")
         set(value) {}
+
+     */
 }
 
-
+/*
 interface SaveData {
     var curTime: String
     var prices: Array<String>
@@ -88,3 +88,5 @@ interface SaveData {
         TODO("Save data to internal file")
     }
 }
+
+*/
