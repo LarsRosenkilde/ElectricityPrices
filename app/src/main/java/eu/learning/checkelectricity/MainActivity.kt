@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             saveData()
         }
 
-        fun saveData() {
+        private fun saveData() {
             var result: String = ""
             for (price in data) {
                 result += ",${price.value}"
