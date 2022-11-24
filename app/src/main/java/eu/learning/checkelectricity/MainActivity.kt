@@ -80,8 +80,12 @@ class MainActivity : AppCompatActivity() {
 
         @Deprecated("Deprecated in Java")
         override fun onPostExecute(aVoid: Void?) {
-            var result: String = ""
             super.onPostExecute(aVoid)
+            saveData()
+        }
+
+        fun saveData() {
+            var result: String = ""
             for (price in data) {
                 result += ",${price.value}"
             }
