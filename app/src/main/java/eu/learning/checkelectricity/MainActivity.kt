@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var intentFlex: Intent
     private lateinit var sharedPreference: SharedPreferences
-    public lateinit var prices: MutableMap<String, String>
+    private lateinit var prices: MutableMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             "combW" to "",
             "combE" to ""
         )
+        saveData()
         setContentView(binding.root)
         startActivity(intentFlex)
     }
@@ -85,23 +86,23 @@ class MainActivity : AppCompatActivity() {
             saveData()
         }
 
-        @SuppressLint("SimpleDateFormat")
-        private fun saveData() {
-            val dateFormat = SimpleDateFormat("dd/M/yyyy")
-            var result: String = dateFormat.format(Date())
-            for (price in prices) {
-                result += ",${price.value}"
-            }
-            result += '\n'
 
-            result = "Testing!!!"
+    }
 
-            val editor: SharedPreferences.Editor = sharedPreference.edit()
-            editor.putString("flexW", "Test Price")
-            editor.apply()
-            /*editor.apply {
-                putString("STRING_KEY", result)
-            }.apply() */
+    @SuppressLint("SimpleDateFormat")
+    private fun saveData() {
+        val dateFormat = SimpleDateFormat("dd/M/yyyy")
+        var result: String = dateFormat.format(Date())
+        for (price in prices) {
+            result += ",${price.value}"
         }
+        result += '\n'
+
+        val editor: SharedPreferences.Editor = sharedPreference.edit()
+        editor.putString("flexW", result)
+        editor.apply()
+        /*editor.apply {
+            putString("STRING_KEY", result)
+        }.apply() */
     }
 }

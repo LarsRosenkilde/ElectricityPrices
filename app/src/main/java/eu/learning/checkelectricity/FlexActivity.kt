@@ -11,6 +11,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import eu.learning.checkelectricity.databinding.ActivityFlexBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Suppress("DEPRECATION")
 class FlexActivity : AppCompatActivity() {
@@ -75,6 +77,7 @@ class FlexActivity : AppCompatActivity() {
         private fun readData() {
             val sharedPreference: SharedPreferences =
                 getSharedPreferences("savedPrices", Context.MODE_PRIVATE)
+
             val savedString: String = sharedPreference.getString("flexW", "defaultPrice")  ?: "Preference Empty!"
             oldPrice.text = savedString
         }
