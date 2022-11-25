@@ -66,8 +66,9 @@ class FlexActivity : AppCompatActivity() {
         }
 
         private fun readData() {
-            val sharedPreferences: SharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-            val savedString: String? = sharedPreferences.getString("STRING_KEY", null)
+            val sharedPreference: SharedPreferences =
+                getSharedPreferences("savedPrices", Context.MODE_PRIVATE)
+            val savedString: String = sharedPreference.getString("flexW", "defaultPrice")  ?: "Preference Empty!"
             oldPrice.text = savedString
         }
     }

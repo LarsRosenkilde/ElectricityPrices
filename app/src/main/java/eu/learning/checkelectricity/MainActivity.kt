@@ -17,10 +17,12 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var intentFlex: Intent
+    private lateinit var sharedPreference: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        sharedPreference = getSharedPreferences("savedPrices", Context.MODE_PRIVATE)
         title = "CheckElectricity"
         intentFlex = Intent(this, FlexActivity::class.java)
         setContentView(binding.root)
@@ -91,12 +93,14 @@ class MainActivity : AppCompatActivity() {
             }
             result += '\n'
 
-            val sharedPreferences: SharedPreferences =
-                getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-            editor.apply {
+            result = "Testing!!!"
+
+            val editor: SharedPreferences.Editor = sharedPreference.edit()
+            editor.putString("flexW", "Test Price")
+            editor.apply()
+            /*editor.apply {
                 putString("STRING_KEY", result)
-            }.apply()
+            }.apply() */
         }
     }
 }
