@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var intentFlex: Intent
     private lateinit var sharedPreference: SharedPreferences
+    public lateinit var prices: MutableMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,14 @@ class MainActivity : AppCompatActivity() {
         sharedPreference = getSharedPreferences("savedPrices", Context.MODE_PRIVATE)
         title = "CheckElectricity"
         intentFlex = Intent(this, FlexActivity::class.java)
+        prices = mutableMapOf(
+            "poolW" to "",
+            "poolE" to "",
+            "flexW" to "",
+            "flexE" to "",
+            "combW" to "",
+            "combE" to ""
+        )
         setContentView(binding.root)
         startActivity(intentFlex)
     }
@@ -44,35 +53,27 @@ class MainActivity : AppCompatActivity() {
             "#elprodukter > div > div > div > div > table:nth-child(3) > tbody > tr:nth-child(2) > td:nth-child(2)"
         private val combElemE =
             "#elprodukter > div > div > div > div > table:nth-child(3) > tbody > tr:nth-child(3) > td:nth-child(2)"
-        private val data: MutableMap<String, String> = mutableMapOf(
-            "poolW" to "",
-            "poolE" to "",
-            "flexW" to "",
-            "flexE" to "",
-            "combW" to "",
-            "combE" to ""
-        )
 
         @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: Void): Void? {
             try {
                 val document =
                     Jsoup.connect("https://norlys.dk/kundeservice/el/gaeldende-elpriser/").get()
-                data["poolW"] =
+                prices["poolW"] =
                     regex.find(document.select(poolElemW).toString())!!.value + " øre/kWh"
-                data["poolE"] =
+                prices["poolE"] =
                     regex.find(document.select(poolElemE).toString())!!.value + " øre/kWh"
-                data["flexW"] =
+                prices["flexW"] =
                     regex.find(document.select(flexElemW).toString())!!.value + " øre/kWh"
-                data["flexE"] =
+                prices["flexE"] =
                     regex.find(document.select(flexElemE).toString())!!.value + " øre/kWh"
-                data["combW"] =
+                prices["combW"] =
                     regex.find(document.select(combElemW).toString())!!.value + " øre/kWh"
-                data["combE"] =
+                prices["combE"] =
                     regex.find(document.select(combElemE).toString())!!.value + " øre/kWh"
             } catch (e: IOException) {
-                data.forEach { entry ->
-                    data[entry.key] = e.stackTraceToString()
+                prices.forEach { entry ->
+                    prices[entry.key] = e.stackTraceToString()
                 }
             }
             return null
@@ -88,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         private fun saveData() {
             val dateFormat = SimpleDateFormat("dd/M/yyyy")
             var result: String = dateFormat.format(Date())
-            for (price in data) {
+            for (price in prices) {
                 result += ",${price.value}"
             }
             result += '\n'
