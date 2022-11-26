@@ -19,9 +19,14 @@ class FlexActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFlexBinding
     private lateinit var textViewFlexW: TextView
     private lateinit var textViewFlexE: TextView
+
+    private lateinit var prices: MutableMap<String, String>
     private lateinit var wOldPrice0: TextView
+    private lateinit var sharedPreference: SharedPreferences
+
     private lateinit var intentPool: Intent
     private lateinit var intentCombo: Intent
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFlexBinding.inflate(layoutInflater)
@@ -29,9 +34,17 @@ class FlexActivity : AppCompatActivity() {
         intentPool = Intent(this, PoolActivity::class.java)
         intentCombo = Intent(this, ComboActivity::class.java)
         setContentView(binding.root)
+
         textViewFlexW = findViewById(R.id.price_west)
         textViewFlexE = findViewById(R.id.price_east)
+
         wOldPrice0 = findViewById(R.id.oldWestPrice0)
+        sharedPreference = getSharedPreferences("savedPrices", Context.MODE_PRIVATE)
+        prices = mutableMapOf(
+            "priceW" to "",
+            "priceE" to "",
+        )
+
         binding.comboButton.setOnClickListener {
             startActivity(intentCombo)
         }
@@ -43,24 +56,16 @@ class FlexActivity : AppCompatActivity() {
     }
     @SuppressLint("StaticFieldLeak")
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
-        /*
-        private var flexW: String = MainActivity().prices["flexW"] ?: "Empty"
-        private var flexE: String = MainActivity().prices["flexE"] ?: "Empty" */
-        private lateinit var flexW: String
-        private lateinit var flexE: String
-        private val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex()
+        private val priceW = "#elprodukter > div > div > div > div > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(2)"
+        private val priceE = "#elprodukter > div > div > div > div > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(2)"
+
         @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: Void): Void? {
             try {
-                /*
-                flexW = MainActivity().prices["flexW"] ?: "Empty"
-                flexE = MainActivity().prices["flexE"] ?: "Empty"
-                */
+                val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex()
                 val document =  Jsoup.connect("https://norlys.dk/kundeservice/el/gaeldende-elpriser/").get()
-                flexW = document.select("#elprodukter > div > div > div > div > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(2)").toString()
-                flexW = regex.find(flexW)!!.value + " øre/kWh"
-                flexE = document.select("#elprodukter > div > div > div > div > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(2)").toString()
-                flexE = regex.find(flexE)!!.value + " øre/kWh"
+                prices["priceW"] = regex.find(document.select(priceW).toString())!!.value + " øre/kWh"
+                prices["priceE"] = regex.find(document.select(priceE).toString())!!.value + " øre/kWh"
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -70,45 +75,27 @@ class FlexActivity : AppCompatActivity() {
         override fun onPostExecute(aVoid: Void?) {
             super.onPostExecute(aVoid)
             readData()
-            textViewFlexW.text = flexW
-            textViewFlexE.text = flexE
+            textViewFlexW.text = prices["priceW"]
+            textViewFlexE.text = prices["priceE"]
+        }
+
+        @SuppressLint("SimpleDateFormat")
+        private fun saveData() {
+            val dateFormat = SimpleDateFormat("dd/M/yyyy")
+            var result: String = dateFormat.format(Date())
+            for (price in prices) {
+                result += ",${price.value}"
+            }
+            result += '\n'
+            val editor: SharedPreferences.Editor = sharedPreference.edit()
+            editor.apply {
+                putString("flexW", result)
+            }.apply()
         }
 
         private fun readData() {
-            val sharedPreference: SharedPreferences =
-                getSharedPreferences("savedPrices", Context.MODE_PRIVATE)
-
             val savedString: String = sharedPreference.getString("flexW", "defaultPrice")  ?: "Preference Empty!"
             wOldPrice0.text = savedString
         }
     }
-    /*
-    override var curTime: String
-        get() = TODO("Not yet implemented")
-        set(value) {}
-
-    override var prices: Array<String>
-        get() = TODO("Not yet implemented")
-        set(value) {}
-
-     */
 }
-
-/*
-interface SaveData {
-    var curTime: String
-    var prices: Array<String>
-
-    @SuppressLint("SimpleDateFormat")
-    fun getDate(): String {
-        val dateFormat = SimpleDateFormat("dd/M/yyyy")
-        curTime = dateFormat.format(Date())
-        return curTime
-    }
-
-    fun save() {
-        TODO("Save data to internal file")
-    }
-}
-
-*/
