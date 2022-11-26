@@ -7,8 +7,12 @@ import android.os.AsyncTask
 import android.content.Intent
 import android.widget.TextView
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import eu.learning.checkelectricity.databinding.ActivityComboBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Suppress("DEPRECATION")
 class ComboActivity : AppCompatActivity() {
@@ -17,9 +21,27 @@ class ComboActivity : AppCompatActivity() {
     private lateinit var textViewComboE: TextView
 
     private lateinit var prices: MutableMap<String, String>
+    private lateinit var sharedPreference: SharedPreferences
+
+    private lateinit var date0: TextView
+    private lateinit var date1: TextView
+    private lateinit var date2: TextView
+    private lateinit var date3: TextView
+    private lateinit var date4: TextView
+    private lateinit var wOldPrice0: TextView
+    private lateinit var eOldPrice0: TextView
+    private lateinit var wOldPrice1: TextView
+    private lateinit var eOldPrice1: TextView
+    private lateinit var wOldPrice2: TextView
+    private lateinit var eOldPrice2: TextView
+    private lateinit var wOldPrice3: TextView
+    private lateinit var eOldPrice3: TextView
+    private lateinit var wOldPrice4: TextView
+    private lateinit var eOldPrice4: TextView
 
     private lateinit var intentFlex: Intent
     private lateinit var intentPool: Intent
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityComboBinding.inflate(layoutInflater)
@@ -27,9 +49,27 @@ class ComboActivity : AppCompatActivity() {
         intentFlex = Intent(this, FlexActivity::class.java)
         intentPool = Intent(this, PoolActivity::class.java)
         setContentView(binding.root)
+
         textViewComboW = findViewById(R.id.price_west)
         textViewComboE = findViewById(R.id.price_east)
 
+        date0 = findViewById(R.id.oldDatePrice0)
+        wOldPrice0 = findViewById(R.id.oldWestPrice0)
+        eOldPrice0 = findViewById(R.id.oldEastPrice0)
+        date1 = findViewById(R.id.oldDatePrice1)
+        wOldPrice1 = findViewById(R.id.oldWestPrice1)
+        eOldPrice1 = findViewById(R.id.oldEastPrice1)
+        date2 = findViewById(R.id.oldDatePrice2)
+        wOldPrice2 = findViewById(R.id.oldWestPrice2)
+        eOldPrice2 = findViewById(R.id.oldEastPrice2)
+        date3 = findViewById(R.id.oldDatePrice3)
+        wOldPrice3 = findViewById(R.id.oldWestPrice3)
+        eOldPrice3 = findViewById(R.id.oldEastPrice3)
+        date4 = findViewById(R.id.oldDatePrice4)
+        wOldPrice4 = findViewById(R.id.oldWestPrice4)
+        eOldPrice4 = findViewById(R.id.oldEastPrice4)
+
+        sharedPreference = getSharedPreferences("savedPricesCombo", Context.MODE_PRIVATE)
         prices = mutableMapOf(
             "priceW" to "",
             "priceE" to "",
@@ -56,15 +96,63 @@ class ComboActivity : AppCompatActivity() {
                 prices["priceW"] = regex.find(document.select(priceW).toString())!!.value + " øre/kWh"
                 prices["priceE"] = regex.find(document.select(priceE).toString())!!.value + " øre/kWh"
             } catch (e: IOException) {
-                e.printStackTrace()
+                prices.forEach { entry ->
+                    prices[entry.key] = e.stackTraceToString()
+                }
             }
             return null
         }
         @Deprecated("Deprecated in Java")
         override fun onPostExecute(aVoid: Void?) {
             super.onPostExecute(aVoid)
+            saveData()
+            readData()
             textViewComboW.text = prices["priceW"]
             textViewComboE.text = prices["priceE"]
+        }
+
+        @SuppressLint("SimpleDateFormat")
+        private fun saveData() {
+            val prevData: String = sharedPreference.getString("combo", "")  ?: ""
+            val dateFormat = SimpleDateFormat("dd/M/yyyy").format(Date())
+            if (!prevData.contains(dateFormat, ignoreCase = false)) {
+                var result: String = prevData + dateFormat
+                for (price in prices) {
+                    result += ":${price.value}"
+                }
+                result += '\n'
+                val editor: SharedPreferences.Editor = sharedPreference.edit()
+                editor.apply {
+                    putString("combo", result)
+                }.apply()
+            }
+        }
+
+        private fun readData() {
+            val savedString: String = sharedPreference.getString("combo", "")  ?: ""
+            if (savedString == "") saveData()
+            val data: List<String> = savedString.split(":")
+            val textFields: MutableMap<String, String> = mutableMapOf(
+                "date0" to "", "wOldPrice0" to "", "eOldPrice0" to "",
+                "date1" to "", "wOldPrice1" to "", "eOldPrice1" to "",
+                "date2" to "", "wOldPrice2" to "", "eOldPrice2" to "",
+                "date3" to "", "wOldPrice3" to "", "eOldPrice3" to "",
+                "date4" to "", "wOldPrice4" to "", "eOldPrice4" to "",
+            )
+            var counter = 0
+            textFields.forEach { entry ->
+                try {
+                    textFields[entry.key] = data[counter]
+                    ++counter
+                } catch (e: IndexOutOfBoundsException) {
+                    textFields[entry.key] = "Unset Value"
+                }
+            }
+            date0.text = textFields["date0"]; wOldPrice0.text = textFields["wOldPrice0"]; eOldPrice0.text = textFields["eOldPrice0"]
+            date1.text = textFields["date1"]; wOldPrice1.text = textFields["wOldPrice1"]; eOldPrice1.text = textFields["eOldPrice1"]
+            date2.text = textFields["date2"]; wOldPrice2.text = textFields["wOldPrice2"]; eOldPrice2.text = textFields["eOldPrice2"]
+            date3.text = textFields["date3"]; wOldPrice3.text = textFields["wOldPrice3"]; eOldPrice3.text = textFields["eOldPrice3"]
+            date4.text = textFields["date4"]; wOldPrice4.text = textFields["wOldPrice4"]; eOldPrice4.text = textFields["eOldPrice4"]
         }
     }
 }

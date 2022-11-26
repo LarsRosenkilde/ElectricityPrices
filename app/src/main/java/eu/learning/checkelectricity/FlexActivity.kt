@@ -69,7 +69,7 @@ class FlexActivity : AppCompatActivity() {
         wOldPrice4 = findViewById(R.id.oldWestPrice4)
         eOldPrice4 = findViewById(R.id.oldEastPrice4)
 
-        sharedPreference = getSharedPreferences("savedPrices", Context.MODE_PRIVATE)
+        sharedPreference = getSharedPreferences("savedPricesFlex", Context.MODE_PRIVATE)
         prices = mutableMapOf(
             "priceW" to "",
             "priceE" to "",
@@ -113,7 +113,7 @@ class FlexActivity : AppCompatActivity() {
 
         @SuppressLint("SimpleDateFormat")
         private fun saveData() {
-            val prevData: String = sharedPreference.getString("flex", "defaultPrice")  ?: ""
+            val prevData: String = sharedPreference.getString("flex", "")  ?: ""
             val dateFormat = SimpleDateFormat("dd/M/yyyy").format(Date())
             if (!prevData.contains(dateFormat, ignoreCase = false)) {
                 var result: String = prevData + dateFormat
@@ -129,7 +129,8 @@ class FlexActivity : AppCompatActivity() {
         }
 
         private fun readData() {
-            val savedString: String = sharedPreference.getString("flexW", "defaultPrice")  ?: "Preference Empty!"
+            val savedString: String = sharedPreference.getString("flex", "")  ?: ""
+            if (savedString == "") saveData()
             val data: List<String> = savedString.split(":")
             val textFields: MutableMap<String, String> = mutableMapOf(
                 "date0" to "", "wOldPrice0" to "", "eOldPrice0" to "",
