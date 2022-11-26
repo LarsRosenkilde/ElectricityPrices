@@ -94,7 +94,7 @@
         app:layout_constraintBottom_toTopOf="@+id/viewDivider"/>
 
     <TextView
-        android:id="@+id/flexWestPrice"
+        android:id="@+id/titleWestPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -106,11 +106,11 @@
         android:textColor="@color/darkGreen"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/flexEastPrice"
+        app:layout_constraintEnd_toStartOf="@+id/titleEastPrice"
         app:layout_constraintTop_toBottomOf="@id/layoutToolbar" />
 
     <TextView
-        android:id="@+id/flexEastPrice"
+        android:id="@+id/titleEastPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -122,7 +122,7 @@
         android:textColor="@color/darkGreen"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/flexWestPrice"
+        app:layout_constraintStart_toEndOf="@id/titleWestPrice"
         app:layout_constraintTop_toBottomOf="@id/layoutToolbar" />
 
     <TextView
@@ -135,9 +135,9 @@
         android:textColor="@color/darkGreen"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/flexWestPrice"
-        app:layout_constraintStart_toStartOf="@id/flexWestPrice"
-        app:layout_constraintTop_toBottomOf="@id/flexWestPrice" />
+        app:layout_constraintEnd_toEndOf="@id/titleWestPrice"
+        app:layout_constraintStart_toStartOf="@id/titleWestPrice"
+        app:layout_constraintTop_toBottomOf="@id/titleWestPrice" />
 
     <TextView
         android:id="@+id/price_east"
@@ -149,9 +149,9 @@
         android:textColor="@color/darkGreen"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/flexEastPrice"
-        app:layout_constraintStart_toStartOf="@id/flexEastPrice"
-        app:layout_constraintTop_toBottomOf="@id/flexEastPrice" />
+        app:layout_constraintEnd_toEndOf="@id/titleEastPrice"
+        app:layout_constraintStart_toStartOf="@id/titleEastPrice"
+        app:layout_constraintTop_toBottomOf="@id/titleEastPrice" />
 
     <View
         android:id="@+id/viewDivider"
@@ -160,5 +160,157 @@
         android:layout_marginTop="15dp"
         android:background="@color/colorDivider"
         app:layout_constraintTop_toBottomOf="@+id/price_west"/>
+
+    <TextView
+        android:id="@+id/oldWestPrice0"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/oldEastPrice0"
+        app:layout_constraintTop_toBottomOf="@id/viewDivider" />
+
+    <TextView
+        android:id="@+id/oldEastPrice0"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/oldWestPrice0"
+        app:layout_constraintTop_toBottomOf="@id/viewDivider" />
+
+    <TextView
+        android:id="@+id/oldWestPrice1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/oldWestPrice0"
+        app:layout_constraintStart_toStartOf="@id/oldWestPrice0"
+        app:layout_constraintTop_toBottomOf="@id/oldWestPrice0" />
+
+    <TextView
+        android:id="@+id/oldEastPrice1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/oldEastPrice0"
+        app:layout_constraintStart_toStartOf="@id/oldEastPrice0"
+        app:layout_constraintTop_toBottomOf="@id/oldEastPrice0" />
+
+    <TextView
+        android:id="@+id/oldWestPrice2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/oldWestPrice1"
+        app:layout_constraintStart_toStartOf="@id/oldWestPrice1"
+        app:layout_constraintTop_toBottomOf="@id/oldWestPrice1" />
+
+    <TextView
+        android:id="@+id/oldEastPrice2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/oldEastPrice1"
+        app:layout_constraintStart_toStartOf="@id/oldEastPrice1"
+        app:layout_constraintTop_toBottomOf="@id/oldEastPrice1" />
+
+    <TextView
+        android:id="@+id/oldWestPrice3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/oldWestPrice2"
+        app:layout_constraintStart_toStartOf="@id/oldWestPrice2"
+        app:layout_constraintTop_toBottomOf="@id/oldWestPrice2" />
+
+    <TextView
+        android:id="@+id/oldEastPrice3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/oldEastPrice2"
+        app:layout_constraintStart_toStartOf="@id/oldEastPrice2"
+        app:layout_constraintTop_toBottomOf="@id/oldEastPrice2" />
+
+    <TextView
+        android:id="@+id/oldWestPrice4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/oldWestPrice3"
+        app:layout_constraintStart_toStartOf="@id/oldWestPrice3"
+        app:layout_constraintTop_toBottomOf="@id/oldWestPrice3" />
+
+    <TextView
+        android:id="@+id/oldEastPrice4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/temp_oldPrice"
+        android:textAllCaps="true"
+        android:textColor="@color/darkGreen"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/oldEastPrice3"
+        app:layout_constraintStart_toStartOf="@id/oldEastPrice3"
+        app:layout_constraintTop_toBottomOf="@id/oldEastPrice3" />
+
+    <View
+        android:id="@+id/viewDivider0"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorDivider"
+        app:layout_constraintTop_toBottomOf="@+id/oldEastPrice4"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
