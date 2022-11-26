@@ -74,6 +74,7 @@ class FlexActivity : AppCompatActivity() {
         @Deprecated("Deprecated in Java")
         override fun onPostExecute(aVoid: Void?) {
             super.onPostExecute(aVoid)
+            saveData()
             readData()
             textViewFlexW.text = prices["priceW"]
             textViewFlexE.text = prices["priceE"]
