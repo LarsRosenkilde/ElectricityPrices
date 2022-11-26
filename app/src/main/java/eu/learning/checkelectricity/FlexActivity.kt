@@ -21,6 +21,7 @@ class FlexActivity : AppCompatActivity() {
     private lateinit var textViewFlexE: TextView
 
     private lateinit var prices: MutableMap<String, String>
+    private lateinit var sharedPreference: SharedPreferences
 
     private lateinit var date0: TextView
     private lateinit var wOldPrice0: TextView
@@ -37,10 +38,6 @@ class FlexActivity : AppCompatActivity() {
     private lateinit var date4: TextView
     private lateinit var wOldPrice4: TextView
     private lateinit var eOldPrice4: TextView
-
-    private lateinit var sharedPreference: SharedPreferences
-
-    private lateinit var tempPrice: TextView
 
     private lateinit var intentPool: Intent
     private lateinit var intentCombo: Intent
