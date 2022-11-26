@@ -86,16 +86,19 @@ class FlexActivity : AppCompatActivity() {
 
         @SuppressLint("SimpleDateFormat")
         private fun saveData() {
-            val dateFormat = SimpleDateFormat("dd/M/yyyy")
-            var result: String = dateFormat.format(Date())
-            for (price in prices) {
-                result += ":${price.value}"
+            val prevData: String = sharedPreference.getString("flex", "defaultPrice")  ?: ""
+            val dateFormat = SimpleDateFormat("dd/M/yyyy").format(Date())
+            if (!prevData.contains(dateFormat, ignoreCase = false)) {
+                var result: String = prevData + dateFormat
+                for (price in prices) {
+                    result += ":${price.value}"
+                }
+                result += '\n'
+                val editor: SharedPreferences.Editor = sharedPreference.edit()
+                editor.apply {
+                    putString("flex", result)
+                }.apply()
             }
-            result += '\n'
-            val editor: SharedPreferences.Editor = sharedPreference.edit()
-            editor.apply {
-                putString("flexW", result)
-            }.apply()
         }
 
         private fun readData() {
