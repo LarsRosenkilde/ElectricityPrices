@@ -14,4 +14,5 @@
     <string name="flex_tab_button">Flex Tab Button</string>
     <string name="pool_tab_button">Pool Tab Button</string>
     <string name="combo_tab_button">Combo Tab Button</string>
+    <string name="temp_oldPrice">Placeholder price</string>
 </resources>
