@@ -20,8 +20,10 @@ class FlexActivity : AppCompatActivity() {
     private lateinit var textViewFlexW: TextView
     private lateinit var textViewFlexE: TextView
 
-    private lateinit var prices: MutableMap<String, String>
+    private lateinit var date0: TextView
     private lateinit var wOldPrice0: TextView
+    private lateinit var eOldPrice0: TextView
+    private lateinit var prices: MutableMap<String, String>
     private lateinit var sharedPreference: SharedPreferences
 
     private lateinit var intentPool: Intent
@@ -38,7 +40,10 @@ class FlexActivity : AppCompatActivity() {
         textViewFlexW = findViewById(R.id.price_west)
         textViewFlexE = findViewById(R.id.price_east)
 
+        date0 = findViewById(R.id.oldDatePrice0)
         wOldPrice0 = findViewById(R.id.oldWestPrice0)
+        eOldPrice0 = findViewById(R.id.oldEastPrice0)
+
         sharedPreference = getSharedPreferences("savedPrices", Context.MODE_PRIVATE)
         prices = mutableMapOf(
             "priceW" to "",
@@ -84,7 +89,7 @@ class FlexActivity : AppCompatActivity() {
             val dateFormat = SimpleDateFormat("dd/M/yyyy")
             var result: String = dateFormat.format(Date())
             for (price in prices) {
-                result += ",${price.value}"
+                result += ":${price.value}"
             }
             result += '\n'
             val editor: SharedPreferences.Editor = sharedPreference.edit()
@@ -95,7 +100,10 @@ class FlexActivity : AppCompatActivity() {
 
         private fun readData() {
             val savedString: String = sharedPreference.getString("flexW", "defaultPrice")  ?: "Preference Empty!"
-            wOldPrice0.text = savedString
+            val data: List<String> = savedString.split(":")
+            date0.text = data[0]
+            wOldPrice0.text = data[1]
+            eOldPrice0.text = data[2]
         }
     }
 }
