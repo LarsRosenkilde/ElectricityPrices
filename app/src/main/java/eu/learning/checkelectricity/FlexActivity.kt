@@ -19,7 +19,7 @@ class FlexActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFlexBinding
     private lateinit var textViewFlexW: TextView
     private lateinit var textViewFlexE: TextView
-    private lateinit var oldPrice: TextView
+    private lateinit var wOldPrice0: TextView
     private lateinit var intentPool: Intent
     private lateinit var intentCombo: Intent
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class FlexActivity : AppCompatActivity() {
         setContentView(binding.root)
         textViewFlexW = findViewById(R.id.price_west)
         textViewFlexE = findViewById(R.id.price_east)
-        oldPrice = findViewById(R.id.previousPrices)
+        wOldPrice0 = findViewById(R.id.oldWestPrice0)
         binding.comboButton.setOnClickListener {
             startActivity(intentCombo)
         }
@@ -79,7 +79,7 @@ class FlexActivity : AppCompatActivity() {
                 getSharedPreferences("savedPrices", Context.MODE_PRIVATE)
 
             val savedString: String = sharedPreference.getString("flexW", "defaultPrice")  ?: "Preference Empty!"
-            oldPrice.text = savedString
+            wOldPrice0.text = savedString
         }
     }
     /*
