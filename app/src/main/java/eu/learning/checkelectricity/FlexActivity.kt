@@ -58,11 +58,10 @@ class FlexActivity : AppCompatActivity() {
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
         private val priceW = "#elprodukter > div > div > div > div > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(2)"
         private val priceE = "#elprodukter > div > div > div > div > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(2)"
-
+        private val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex()
         @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: Void): Void? {
             try {
-                val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex()
                 val document =  Jsoup.connect("https://norlys.dk/kundeservice/el/gaeldende-elpriser/").get()
                 prices["priceW"] = regex.find(document.select(priceW).toString())!!.value + " øre/kWh"
                 prices["priceE"] = regex.find(document.select(priceE).toString())!!.value + " øre/kWh"

@@ -15,6 +15,9 @@ class ComboActivity : AppCompatActivity() {
     private lateinit var binding: ActivityComboBinding
     private lateinit var textViewComboW: TextView
     private lateinit var textViewComboE: TextView
+
+    private lateinit var prices: MutableMap<String, String>
+
     private lateinit var intentFlex: Intent
     private lateinit var intentPool: Intent
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +29,12 @@ class ComboActivity : AppCompatActivity() {
         setContentView(binding.root)
         textViewComboW = findViewById(R.id.price_west)
         textViewComboE = findViewById(R.id.price_east)
+
+        prices = mutableMapOf(
+            "priceW" to "",
+            "priceE" to "",
+        )
+
         binding.flexButton.setOnClickListener {
             startActivity(intentFlex)
         }
@@ -37,17 +46,15 @@ class ComboActivity : AppCompatActivity() {
     }
     @SuppressLint("StaticFieldLeak")
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
-        private lateinit var comboW: String
-        private lateinit var comboE: String
+        private val priceW = "#elprodukter > div > div > div > div > table:nth-child(3) > tbody > tr:nth-child(2) > td:nth-child(2)"
+        private val priceE = "#elprodukter > div > div > div > div > table:nth-child(3) > tbody > tr:nth-child(3) > td:nth-child(2)"
         private val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex() // 100,00
         @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: Void): Void? {
             try {
                 val document =  Jsoup.connect("https://norlys.dk/kundeservice/el/gaeldende-elpriser/").get()
-                comboW = document.select("#elprodukter > div > div > div > div > table:nth-child(3) > tbody > tr:nth-child(2) > td:nth-child(2)").toString()
-                comboW = regex.find(comboW)!!.value + " øre/kWh"
-                comboE = document.select("#elprodukter > div > div > div > div > table:nth-child(3) > tbody > tr:nth-child(3) > td:nth-child(2)").toString()
-                comboE = regex.find(comboE)!!.value + " øre/kWh"
+                prices["priceW"] = regex.find(document.select(priceW).toString())!!.value + " øre/kWh"
+                prices["priceE"] = regex.find(document.select(priceE).toString())!!.value + " øre/kWh"
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -56,8 +63,8 @@ class ComboActivity : AppCompatActivity() {
         @Deprecated("Deprecated in Java")
         override fun onPostExecute(aVoid: Void?) {
             super.onPostExecute(aVoid)
-            textViewComboW.text = comboW
-            textViewComboE.text = comboE
+            textViewComboW.text = prices["priceW"]
+            textViewComboE.text = prices["priceE"]
         }
     }
 }
