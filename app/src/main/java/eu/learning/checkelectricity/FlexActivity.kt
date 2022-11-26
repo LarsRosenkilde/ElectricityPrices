@@ -24,18 +24,18 @@ class FlexActivity : AppCompatActivity() {
     private lateinit var sharedPreference: SharedPreferences
 
     private lateinit var date0: TextView
+    private lateinit var date1: TextView
+    private lateinit var date2: TextView
+    private lateinit var date3: TextView
+    private lateinit var date4: TextView
     private lateinit var wOldPrice0: TextView
     private lateinit var eOldPrice0: TextView
-    private lateinit var date1: TextView
     private lateinit var wOldPrice1: TextView
     private lateinit var eOldPrice1: TextView
-    private lateinit var date2: TextView
     private lateinit var wOldPrice2: TextView
     private lateinit var eOldPrice2: TextView
-    private lateinit var date3: TextView
     private lateinit var wOldPrice3: TextView
     private lateinit var eOldPrice3: TextView
-    private lateinit var date4: TextView
     private lateinit var wOldPrice4: TextView
     private lateinit var eOldPrice4: TextView
 
