@@ -120,7 +120,7 @@ class ComboActivity : AppCompatActivity() {
                 for (price in prices) {
                     result += ":${price.value}"
                 }
-                result += '\n'
+                result += ':'
                 val editor: SharedPreferences.Editor = sharedPreference.edit()
                 editor.apply {
                     putString("combo", result)
@@ -131,7 +131,7 @@ class ComboActivity : AppCompatActivity() {
         private fun readData() {
             val savedString: String = sharedPreference.getString("combo", "")  ?: ""
             if (savedString == "") saveData()
-            val data: List<String> = savedString.split(":")
+            val data: List<String> = savedString.split(':').dropLast(1)
             val textFields: MutableMap<String, String> = mutableMapOf(
                 "date0" to "", "wOldPrice0" to "", "eOldPrice0" to "",
                 "date1" to "", "wOldPrice1" to "", "eOldPrice1" to "",
