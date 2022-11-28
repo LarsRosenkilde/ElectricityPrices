@@ -9,8 +9,11 @@ import android.widget.TextView
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import eu.learning.checkelectricity.databinding.ActivityFlexBinding
+import io.github.farshidroohi.ChartEntity
+import io.github.farshidroohi.LineChart
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -83,6 +86,7 @@ class FlexActivity : AppCompatActivity() {
         }
         binding.flexButton.isPressed = true
         WebScratch().execute()
+        plotData()
     }
     @SuppressLint("StaticFieldLeak")
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
@@ -153,5 +157,18 @@ class FlexActivity : AppCompatActivity() {
             date3.text = textFields["date3"]; wOldPrice3.text = textFields["wOldPrice3"]; eOldPrice3.text = textFields["eOldPrice3"]
             date4.text = textFields["date4"]; wOldPrice4.text = textFields["wOldPrice4"]; eOldPrice4.text = textFields["eOldPrice4"]
         }
+    }
+
+    private fun plotData() {
+        val firstChartEntity = ChartEntity(Color.WHITE, floatArrayOf(113000f, 183000f, 188000f, 695000f, 324000f, 230000f, 188000f, 15000f, 126000f, 5000f, 33000f))
+        val secondChartEntity = ChartEntity(Color.YELLOW, floatArrayOf(0f, 245000f, 1011000f, 1000f, 0f, 0f, 47000f, 20000f, 12000f, 124400f, 160000f))
+        val legendArr = listOf("05/21", "05/22", "05/23", "05/24", "05/25", "05/26", "05/27", "05/28", "05/29", "05/30", "05/31")
+        val list = ArrayList<ChartEntity>().apply {
+            add(firstChartEntity)
+            add(secondChartEntity)
+        }
+        val lineChart = findViewById<LineChart>(R.id.lineChart)
+        lineChart.setLegend(legendArr)
+        lineChart.setList(list)
     }
 }
