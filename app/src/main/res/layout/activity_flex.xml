@@ -396,7 +396,7 @@
         app:chart_bg_color="@color/lightGreen"
         app:chart_line_color="@color/darkGreen"
         app:chart_line_size="4dp"
-        app:chart_padding_bottom="20dp"
+        app:chart_padding_bottom="45dp"
         app:chart_padding_left="20dp"
         app:chart_padding_right="20dp"
         app:chart_padding_top="20dp"
