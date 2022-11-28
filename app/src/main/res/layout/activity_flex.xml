@@ -388,5 +388,20 @@
         android:background="@color/colorDivider"
         app:layout_constraintTop_toBottomOf="@+id/oldEastPrice4"/>
 
+    <io.github.farshidroohi.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:orientation="vertical"
+        app:chart_bg_color="@color/lightGreen"
+        app:chart_line_color="@color/darkGreen"
+        app:chart_line_size="4dp"
+        app:chart_padding_bottom="20dp"
+        app:chart_padding_left="20dp"
+        app:chart_padding_right="20dp"
+        app:chart_padding_top="20dp"
+        app:layout_constraintTop_toBottomOf="@id/viewDivider0"
+        app:layout_constraintBottom_toTopOf="@id/view"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
