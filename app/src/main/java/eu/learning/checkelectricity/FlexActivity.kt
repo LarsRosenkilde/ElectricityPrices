@@ -86,7 +86,6 @@ class FlexActivity : AppCompatActivity() {
         }
         binding.flexButton.isPressed = true
         WebScratch().execute()
-        plotData()
     }
     @SuppressLint("StaticFieldLeak")
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
@@ -160,8 +159,7 @@ class FlexActivity : AppCompatActivity() {
             for (i in 0 until _pricesMean.count() step 2) {
                 pricesMean.add((_pricesMean[i] + _pricesMean[i+1]) / 2)
             }
-            textFields["eOldPrice4"] = pricesMean.toString()
-            textFields["eOldPrice3"] = dates.toString()
+            plotData(pricesMean, dates)
 
             date0.text = textFields["date0"]; wOldPrice0.text = textFields["wOldPrice0"]; eOldPrice0.text = textFields["eOldPrice0"]
             date1.text = textFields["date1"]; wOldPrice1.text = textFields["wOldPrice1"]; eOldPrice1.text = textFields["eOldPrice1"]
@@ -180,13 +178,13 @@ class FlexActivity : AppCompatActivity() {
         }
     }
 
-    private fun plotData() {
-        val firstChartEntity = ChartEntity(Color.WHITE, floatArrayOf(113000f, 183000f, 188000f, 695000f, 324000f, 230000f, 188000f, 15000f, 126000f, 5000f, 33000f))
-        val secondChartEntity = ChartEntity(Color.YELLOW, floatArrayOf(0f, 245000f, 1011000f, 1000f, 0f, 0f, 47000f, 20000f, 12000f, 124400f, 160000f))
-        val legendArr = listOf("05/21", "05/22", "05/23", "05/24", "05/25", "05/26", "05/27", "05/28", "05/29", "05/30", "05/31")
+    private fun plotData(priceData: MutableList<Float>, priceDates: MutableList<String>) {
+        val firstChartEntity = ChartEntity(Color.WHITE, priceData.toFloatArray()/*floatArrayOf(113000f, 183000f, 188000f, 695000f, 324000f, 230000f, 188000f, 15000f, 126000f, 5000f, 33000f)*/)
+        //val secondChartEntity = ChartEntity(Color.YELLOW, /*floatArrayOf(0f, 245000f, 1011000f, 1000f, 0f, 0f, 47000f, 20000f, 12000f, 124400f, 160000f)*/)
+        val legendArr = priceDates.toList() /*listOf("05/21", "05/22", "05/23", "05/24", "05/25", "05/26", "05/27", "05/28", "05/29", "05/30", "05/31") */
         val list = ArrayList<ChartEntity>().apply {
             add(firstChartEntity)
-            add(secondChartEntity)
+            //add(secondChartEntity)
         }
         val lineChart = findViewById<LineChart>(R.id.lineChart)
         lineChart.setLegend(legendArr)
