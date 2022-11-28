@@ -16,4 +16,6 @@
     <string name="combo_tab_button">Combo Tab Button</string>
     <string name="temp_oldPrice">Placeholder price</string>
     <string name="temp_oldDate">Placeholder date</string>
+    <string name="nav_menu_title">Nav Menu Title</string>
+    <string name="nav_menu_sub_title">Nav Menu Sub Title</string>
 </resources>
