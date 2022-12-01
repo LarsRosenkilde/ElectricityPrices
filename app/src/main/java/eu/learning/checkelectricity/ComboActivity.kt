@@ -90,20 +90,10 @@ class ComboActivity : AppCompatActivity() {
     }
     @SuppressLint("StaticFieldLeak")
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
-        private val priceW = "#elprodukter > div > div > div > div > table:nth-child(3) > tbody > tr:nth-child(2) > td:nth-child(2)"
-        private val priceE = "#elprodukter > div > div > div > div > table:nth-child(3) > tbody > tr:nth-child(3) > td:nth-child(2)"
-        private val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex() // 100,00
+        private var data: MutableMap<String, String> = mutableMapOf()
         @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: Void): Void? {
-            try {
-                val document =  Jsoup.connect("https://norlys.dk/kundeservice/el/gaeldende-elpriser/").get()
-                prices["priceW"] = regex.find(document.select(priceW).toString())!!.value + " øre/kWh"
-                prices["priceE"] = regex.find(document.select(priceE).toString())!!.value + " øre/kWh"
-            } catch (e: IOException) {
-                prices.forEach { entry ->
-                    prices[entry.key] = e.stackTraceToString()
-                }
-            }
+            data = DataHandler().scrape()
             return null
         }
         @Deprecated("Deprecated in Java")
@@ -111,8 +101,8 @@ class ComboActivity : AppCompatActivity() {
             super.onPostExecute(aVoid)
             saveData()
             readData()
-            textViewComboW.text = prices["priceW"]
-            textViewComboE.text = prices["priceE"]
+            textViewComboW.text = data["priceW"]
+            textViewComboE.text = data["priceE"]
         }
 
         @SuppressLint("SimpleDateFormat")
