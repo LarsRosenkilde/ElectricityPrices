@@ -2,9 +2,6 @@ package eu.learning.checkelectricity
 
 class DataScraper (data: String) {
     private val splitData: List<String> = data.dropLast(1).split(':')
-    init {
-        println("Data Amount: ${splitData.count()}")
-    }
 
     fun divide (): Pair<List<String>, FloatArray> {
         val meanPrices: MutableList<Float> = mutableListOf()
@@ -29,27 +26,4 @@ fun main() {
 
     println(prices)
     println(dates)
-
-    fun populateFields(dataString: String) {
-        val data: List<String> = dataString.dropLast(1).split(':')
-        val textFields: MutableMap<String, String> = mutableMapOf(
-            "date0" to "", "wOldPrice0" to "", "eOldPrice0" to "",
-            "date1" to "", "wOldPrice1" to "", "eOldPrice1" to "",
-            "date2" to "", "wOldPrice2" to "", "eOldPrice2" to "",
-            "date3" to "", "wOldPrice3" to "", "eOldPrice3" to "",
-            "date4" to "", "wOldPrice4" to "", "eOldPrice4" to "",
-        )
-        var counter = 0
-        textFields.forEach { elem ->
-            try {
-                textFields[elem.key] = data[counter++]
-            } catch (E: IndexOutOfBoundsException) {
-                textFields[elem.key] = "Unset Value"
-            }
-        }
-
-        println(textFields)
-    }
-
-    populateFields(dummyData)
 }
