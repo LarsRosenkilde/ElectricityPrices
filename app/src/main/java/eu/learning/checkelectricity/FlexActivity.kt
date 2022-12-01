@@ -148,14 +148,14 @@ class FlexActivity : AppCompatActivity() {
 
             plotData(savedString)
         }
-    }
 
-    private fun plotData(data: String) {
-        val (dates, prices) = DataScraper(data).divide()
-        val chartEntity = ChartEntity(Color.WHITE, prices)
-        val list = ArrayList<ChartEntity>().apply { add(chartEntity) }
-        val lineChart = findViewById<LineChart>(R.id.lineChart)
-        lineChart.setLegend(dates)
-        lineChart.setList(list)
+        private fun plotData(data: String) {
+            val (dates, prices) = DataScraper(data).divide()
+            val chartEntity = ChartEntity(Color.WHITE, prices)
+            val list = ArrayList<ChartEntity>().apply { add(chartEntity) }
+            val lineChart = findViewById<LineChart>(R.id.lineChart)
+            lineChart.setLegend(dates)
+            lineChart.setList(list)
+        }
     }
 }
