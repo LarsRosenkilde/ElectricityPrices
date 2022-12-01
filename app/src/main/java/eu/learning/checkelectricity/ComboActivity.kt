@@ -105,7 +105,6 @@ class ComboActivity : AppCompatActivity() {
             textViewComboE.text = data["priceE"]
         }
 
-
         @SuppressLint("SimpleDateFormat")
         private fun saveData() {
             val prevData: String = sharedPreference.getString("combo", "")  ?: ""
