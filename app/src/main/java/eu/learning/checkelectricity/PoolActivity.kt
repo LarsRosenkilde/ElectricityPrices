@@ -97,8 +97,8 @@ class PoolActivity : AppCompatActivity() {
             super.onPostExecute(aVoid)
             saveData()
             readData()
-            textViewPoolW.text = data["priceW"]
-            textViewPoolE.text = data["priceE"]
+            textViewPoolW.text = data["poolW"]
+            textViewPoolE.text = data["poolE"]
         }
 
         @SuppressLint("SimpleDateFormat")

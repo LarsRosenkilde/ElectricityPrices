@@ -100,8 +100,8 @@ class FlexActivity : AppCompatActivity() {
             super.onPostExecute(aVoid)
             saveData()
             readData()
-            textViewFlexW.text = data["priceW"]
-            textViewFlexE.text = data["priceE"]
+            textViewFlexW.text = data["flexW"]
+            textViewFlexE.text = data["flexE"]
         }
 
         @SuppressLint("SimpleDateFormat")

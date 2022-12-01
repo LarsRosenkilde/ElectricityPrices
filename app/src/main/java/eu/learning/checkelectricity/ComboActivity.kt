@@ -101,8 +101,8 @@ class ComboActivity : AppCompatActivity() {
             super.onPostExecute(aVoid)
             saveData()
             readData()
-            textViewComboW.text = data["priceW"]
-            textViewComboE.text = data["priceE"]
+            textViewComboW.text = data["combW"]
+            textViewComboE.text = data["combE"]
         }
 
         @SuppressLint("SimpleDateFormat")
