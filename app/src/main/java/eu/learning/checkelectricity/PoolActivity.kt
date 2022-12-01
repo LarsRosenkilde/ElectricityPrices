@@ -1,8 +1,6 @@
 package eu.learning.checkelectricity
 
-import org.jsoup.Jsoup
 import android.os.Bundle
-import java.io.IOException
 import android.os.AsyncTask
 import android.content.Intent
 import android.widget.TextView
@@ -88,20 +86,10 @@ class PoolActivity : AppCompatActivity() {
     }
     @SuppressLint("StaticFieldLeak")
     inner class WebScratch : AsyncTask<Void, Void, Void>() {
-        private val priceW = "#elprodukter > div > div > div > div > table:nth-child(1) > tbody > tr:nth-child(2) > td:nth-child(2)"
-        private val priceE = "#elprodukter > div > div > div > div > table:nth-child(1) > tbody > tr:nth-child(3) > td:nth-child(2)"
-        private val regex: Regex = """([0-9])\w+,[0-9]\w""".toRegex()
+        private var data: MutableMap<String, String> = mutableMapOf()
         @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg params: Void): Void? {
-            try {
-                val document =  Jsoup.connect("https://norlys.dk/kundeservice/el/gaeldende-elpriser/").get()
-                prices["priceW"] = regex.find(document.select(priceW).toString())!!.value + " øre/kWh"
-                prices["priceE"] = regex.find(document.select(priceE).toString())!!.value + " øre/kWh"
-            } catch (e: IOException) {
-                prices.forEach { entry ->
-                    prices[entry.key] = e.stackTraceToString()
-                }
-            }
+            data = DataHandler().scrape()
             return null
         }
         @Deprecated("Deprecated in Java")
@@ -109,8 +97,8 @@ class PoolActivity : AppCompatActivity() {
             super.onPostExecute(aVoid)
             saveData()
             readData()
-            textViewPoolW.text = prices["priceW"]
-            textViewPoolE.text = prices["priceE"]
+            textViewPoolW.text = data["priceW"]
+            textViewPoolE.text = data["priceE"]
         }
 
         @SuppressLint("SimpleDateFormat")
