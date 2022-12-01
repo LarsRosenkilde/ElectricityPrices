@@ -9,8 +9,10 @@ import android.widget.TextView
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import eu.learning.checkelectricity.databinding.ActivityComboBinding
+import io.github.farshidroohi.ChartEntity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -142,8 +144,7 @@ class ComboActivity : AppCompatActivity() {
             var counter = 0
             textFields.forEach { entry ->
                 try {
-                    textFields[entry.key] = data[counter]
-                    ++counter
+                    textFields[entry.key] = data[counter++]
                 } catch (e: IndexOutOfBoundsException) {
                     textFields[entry.key] = "Unset Value"
                 }
@@ -153,6 +154,10 @@ class ComboActivity : AppCompatActivity() {
             date2.text = textFields["date2"]; wOldPrice2.text = textFields["wOldPrice2"]; eOldPrice2.text = textFields["eOldPrice2"]
             date3.text = textFields["date3"]; wOldPrice3.text = textFields["wOldPrice3"]; eOldPrice3.text = textFields["eOldPrice3"]
             date4.text = textFields["date4"]; wOldPrice4.text = textFields["wOldPrice4"]; eOldPrice4.text = textFields["eOldPrice4"]
+        }
+
+        fun plotData(data: String) {
+            val (dates, prices) = DataScraper(data).divide()
         }
     }
 }

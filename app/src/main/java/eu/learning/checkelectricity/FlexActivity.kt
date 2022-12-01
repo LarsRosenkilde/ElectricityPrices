@@ -171,30 +171,6 @@ class FlexActivity : AppCompatActivity() {
         }
     }
 
-    private fun extractData(data: List<String>) {
-        data.forEach {t ->
-            println(t)
-        }
-        /*val _pricesMean: MutableList<Float> = mutableListOf()
-        val pricesMean: MutableList<Float> = mutableListOf()
-        val dates: MutableList<String> = mutableListOf()
-        var counter = 0
-        textFields.forEach { entry ->
-            try {
-                textFields[entry.key] = data[counter]
-                if (data[counter].contains("øre/kWh")) {
-                    _pricesMean.add(data[counter].replace(" øre/kWh", "").replace(',', '.').toFloat())
-                } else if (data[counter].contains(Regex("""([0-9])\w+\/+([0-9])+\/([0-9])+"""))) dates.add(data[counter])
-                ++counter
-            } catch (e: IndexOutOfBoundsException) {
-                textFields[entry.key] = "Unset Value"
-            }
-        }
-        for (i in 0 until _pricesMean.count() step 2) {
-            pricesMean.add((_pricesMean[i] + _pricesMean[i+1]) / 2)
-        }*/
-    }
-
     private fun plotData(priceData: MutableList<Float>, priceDates: MutableList<String>) {
         val firstChartEntity = ChartEntity(Color.WHITE, priceData.toFloatArray())
         val legendArr = priceDates.toList()

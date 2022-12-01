@@ -6,7 +6,7 @@ class DataScraper (data: String) {
         println("Data Amount: ${splitData.count()}")
     }
 
-    fun divide (): Pair<MutableList<Float>, MutableList<String>> {
+    fun divide (): Pair<FloatArray, List<String>> {
         val meanPrices: MutableList<Float> = mutableListOf()
         val dates: MutableList<String> = mutableListOf()
         for (i in 0 until splitData.count() step 3) {
@@ -19,7 +19,7 @@ class DataScraper (data: String) {
                 .replace(',', '.')
                 .toFloat()) / 2)
         }
-        return Pair(meanPrices, dates)
+        return Pair(meanPrices.toFloatArray(), dates.toList())
     }
 }
 
