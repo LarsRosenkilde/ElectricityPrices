@@ -167,24 +167,38 @@ class FlexActivity : AppCompatActivity() {
             date3.text = textFields["date3"]; wOldPrice3.text = textFields["wOldPrice3"]; eOldPrice3.text = textFields["eOldPrice3"]
             date4.text = textFields["date4"]; wOldPrice4.text = textFields["wOldPrice4"]; eOldPrice4.text = textFields["eOldPrice4"]
 
-            /*
-            fun plot() {
-                var pricesMean: MutableList<Float>
-                var dates: MutableList<String> = mutableListOf("", "", "")
-                textFields.forEach { entry ->
-                    dates.add(entry.key)
-                }
-            }*/
         }
     }
 
+    private fun extractData(data: List<String>) {
+        data.forEach {t ->
+            println(t)
+        }
+        /*val _pricesMean: MutableList<Float> = mutableListOf()
+        val pricesMean: MutableList<Float> = mutableListOf()
+        val dates: MutableList<String> = mutableListOf()
+        var counter = 0
+        textFields.forEach { entry ->
+            try {
+                textFields[entry.key] = data[counter]
+                if (data[counter].contains("øre/kWh")) {
+                    _pricesMean.add(data[counter].replace(" øre/kWh", "").replace(',', '.').toFloat())
+                } else if (data[counter].contains(Regex("""([0-9])\w+\/+([0-9])+\/([0-9])+"""))) dates.add(data[counter])
+                ++counter
+            } catch (e: IndexOutOfBoundsException) {
+                textFields[entry.key] = "Unset Value"
+            }
+        }
+        for (i in 0 until _pricesMean.count() step 2) {
+            pricesMean.add((_pricesMean[i] + _pricesMean[i+1]) / 2)
+        }*/
+    }
+
     private fun plotData(priceData: MutableList<Float>, priceDates: MutableList<String>) {
-        val firstChartEntity = ChartEntity(Color.WHITE, priceData.toFloatArray()/*floatArrayOf(113000f, 183000f, 188000f, 695000f, 324000f, 230000f, 188000f, 15000f, 126000f, 5000f, 33000f)*/)
-        //val secondChartEntity = ChartEntity(Color.YELLOW, /*floatArrayOf(0f, 245000f, 1011000f, 1000f, 0f, 0f, 47000f, 20000f, 12000f, 124400f, 160000f)*/)
-        val legendArr = priceDates.toList() /*listOf("05/21", "05/22", "05/23", "05/24", "05/25", "05/26", "05/27", "05/28", "05/29", "05/30", "05/31") */
+        val firstChartEntity = ChartEntity(Color.WHITE, priceData.toFloatArray())
+        val legendArr = priceDates.toList()
         val list = ArrayList<ChartEntity>().apply {
             add(firstChartEntity)
-            //add(secondChartEntity)
         }
         val lineChart = findViewById<LineChart>(R.id.lineChart)
         lineChart.setLegend(legendArr)
