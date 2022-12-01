@@ -13,8 +13,10 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import eu.learning.checkelectricity.databinding.ActivityComboBinding
 import io.github.farshidroohi.ChartEntity
+import io.github.farshidroohi.LineChart
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 @Suppress("DEPRECATION")
 class ComboActivity : AppCompatActivity() {
@@ -139,7 +141,7 @@ class ComboActivity : AppCompatActivity() {
                 "date1" to "", "wOldPrice1" to "", "eOldPrice1" to "",
                 "date2" to "", "wOldPrice2" to "", "eOldPrice2" to "",
                 "date3" to "", "wOldPrice3" to "", "eOldPrice3" to "",
-                "date4" to "", "wOldPrice4" to "", "eOldPrice4" to "",
+                "date4" to "", "wOldPrice4" to "", "eOldPrice4" to ""
             )
             var counter = 0
             textFields.forEach { entry ->
@@ -154,10 +156,17 @@ class ComboActivity : AppCompatActivity() {
             date2.text = textFields["date2"]; wOldPrice2.text = textFields["wOldPrice2"]; eOldPrice2.text = textFields["eOldPrice2"]
             date3.text = textFields["date3"]; wOldPrice3.text = textFields["wOldPrice3"]; eOldPrice3.text = textFields["eOldPrice3"]
             date4.text = textFields["date4"]; wOldPrice4.text = textFields["wOldPrice4"]; eOldPrice4.text = textFields["eOldPrice4"]
+
+            plotData(savedString)
         }
 
         fun plotData(data: String) {
             val (dates, prices) = DataScraper(data).divide()
+            val chartEntity = ChartEntity(Color.WHITE, prices)
+            val list = ArrayList<ChartEntity>().apply { add(chartEntity) }
+            val lineChart = findViewById<LineChart>(R.id.lineChart)
+            lineChart.setLegend(dates)
+            lineChart.setList(list)
         }
     }
 }
