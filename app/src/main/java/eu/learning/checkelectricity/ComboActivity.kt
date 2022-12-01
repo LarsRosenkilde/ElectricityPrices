@@ -160,7 +160,7 @@ class ComboActivity : AppCompatActivity() {
             plotData(savedString)
         }
 
-        fun plotData(data: String) {
+        private fun plotData(data: String) {
             val (dates, prices) = DataScraper(data).divide()
             val chartEntity = ChartEntity(Color.WHITE, prices)
             val list = ArrayList<ChartEntity>().apply { add(chartEntity) }

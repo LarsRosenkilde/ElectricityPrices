@@ -141,26 +141,14 @@ class FlexActivity : AppCompatActivity() {
                 "date3" to "", "wOldPrice3" to "", "eOldPrice3" to "",
                 "date4" to "", "wOldPrice4" to "", "eOldPrice4" to "",
             )
-            val _pricesMean: MutableList<Float> = mutableListOf()
-            val pricesMean: MutableList<Float> = mutableListOf()
-            val dates: MutableList<String> = mutableListOf()
             var counter = 0
-
             textFields.forEach { entry ->
                 try {
-                    textFields[entry.key] = data[counter]
-                    if (data[counter].contains("øre/kWh")) {
-                        _pricesMean.add(data[counter].replace(" øre/kWh", "").replace(',', '.').toFloat())
-                    } else if (data[counter].contains(Regex("""([0-9])\w+\/+([0-9])+\/([0-9])+"""))) dates.add(data[counter])
-                    ++counter
+                    textFields[entry.key] = data[counter++]
                 } catch (e: IndexOutOfBoundsException) {
                     textFields[entry.key] = "Unset Value"
                 }
             }
-            for (i in 0 until _pricesMean.count() step 2) {
-                pricesMean.add((_pricesMean[i] + _pricesMean[i+1]) / 2)
-            }
-            plotData(pricesMean, dates)
 
             date0.text = textFields["date0"]; wOldPrice0.text = textFields["wOldPrice0"]; eOldPrice0.text = textFields["eOldPrice0"]
             date1.text = textFields["date1"]; wOldPrice1.text = textFields["wOldPrice1"]; eOldPrice1.text = textFields["eOldPrice1"]
@@ -168,17 +156,16 @@ class FlexActivity : AppCompatActivity() {
             date3.text = textFields["date3"]; wOldPrice3.text = textFields["wOldPrice3"]; eOldPrice3.text = textFields["eOldPrice3"]
             date4.text = textFields["date4"]; wOldPrice4.text = textFields["wOldPrice4"]; eOldPrice4.text = textFields["eOldPrice4"]
 
+            plotData(savedString)
         }
     }
 
-    private fun plotData(priceData: MutableList<Float>, priceDates: MutableList<String>) {
-        val firstChartEntity = ChartEntity(Color.WHITE, priceData.toFloatArray())
-        val legendArr = priceDates.toList()
-        val list = ArrayList<ChartEntity>().apply {
-            add(firstChartEntity)
-        }
+    private fun plotData(data: String) {
+        val (dates, prices) = DataScraper(data).divide()
+        val chartEntity = ChartEntity(Color.WHITE, prices)
+        val list = ArrayList<ChartEntity>().apply { add(chartEntity) }
         val lineChart = findViewById<LineChart>(R.id.lineChart)
-        lineChart.setLegend(legendArr)
+        lineChart.setLegend(dates)
         lineChart.setList(list)
     }
 }
