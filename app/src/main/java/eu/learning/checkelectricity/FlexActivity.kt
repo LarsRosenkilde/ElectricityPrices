@@ -145,6 +145,7 @@ class FlexActivity : AppCompatActivity() {
             val pricesMean: MutableList<Float> = mutableListOf()
             val dates: MutableList<String> = mutableListOf()
             var counter = 0
+
             textFields.forEach { entry ->
                 try {
                     textFields[entry.key] = data[counter]
