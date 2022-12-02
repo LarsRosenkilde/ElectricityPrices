@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import eu.learning.checkelectricity.databinding.ActivityFlexBinding
 import io.github.farshidroohi.ChartEntity
 import io.github.farshidroohi.LineChart
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -123,6 +124,7 @@ class FlexActivity : AppCompatActivity() {
         private fun readData() {
             val savedString: String = sharedPreference.getString("flex", "")  ?: ""
             if (savedString == "") saveData()
+            //val savedString = File("DebugData.txt").readText()
             val data: List<String> = savedString.split(':').dropLast(1)
             val textFields: MutableMap<String, String> = mutableMapOf(
                 "date0" to "", "wOldPrice0" to "", "eOldPrice0" to "",
