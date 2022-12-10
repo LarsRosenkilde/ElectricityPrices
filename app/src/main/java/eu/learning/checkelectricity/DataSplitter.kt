@@ -16,7 +16,7 @@ class DataScraper(data: String) {
                     .replace(" øre/kWh", "")
                     .replace(',', '.')
                     .toFloat()) / 2)
-            } catch (e: NumberFormatException) {
+            } catch(e: NumberFormatException) {
                 print(e.printStackTrace())
                 dates.add(e.stackTraceToString())
                 meanPrices.add(1000F)
