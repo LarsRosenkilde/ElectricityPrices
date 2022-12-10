@@ -1,9 +1,9 @@
 package eu.learning.checkelectricity
 
-class DataScraper (data: String) {
+class DataScraper(data: String) {
     private val splitData: List<String> = data.dropLast(1).split(':')
 
-    fun divide (): Pair<List<String>, FloatArray> {
+    fun divide(): Pair<List<String>, FloatArray> {
         val meanPrices: MutableList<Float> = mutableListOf()
         val dates: MutableList<String> = mutableListOf()
         for (i in 0 until splitData.count() step 3) {
